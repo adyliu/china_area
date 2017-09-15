@@ -13,6 +13,7 @@
 * level,code,name,[code,name...]
 * level: 省1，市2，县3，镇4，村5
 
+文本内容
 
     $ gzcat area_code.csv.gz |wc -l
       713031
@@ -30,14 +31,11 @@
     5,11,北京市,110100000000,市辖区,110101000000,东城区,110101001000,东华门街道办事处,110101001008,黄图岗社区居委会
 
 
-## SELECT count(*) FROM area_code
 
-    713031
+## on OS X: $ gzcat area_code.sql.gz |head -n 38
 
+MySQL 内容：
 
-## on OS X:
-
-    $ gzcat area_code.sql.gz |head -n 38
     # ************************************************************
     # Sequel Pro SQL dump
     # Version 4541

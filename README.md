@@ -23,8 +23,8 @@
 文本内容
 
 ```bash
-$ gzcat area_code_2018.csv.tgz |wc -l
-    720922
+$ gzcat area_code_2018.csv.gz |wc -l
+  720922
 
 $ gzcat area_code_2018.csv.gz |head
 110000000000,北京市,1,0

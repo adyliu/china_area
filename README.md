@@ -114,3 +114,47 @@ code	province	city	county	town	villagetr
 110101001011	北京市	市辖区	东城区	东华门街道办事处	甘雨社区居委会
 110101001013	北京市	市辖区	东城区	东华门街道办事处	台基厂社区居委会
 ```
+
+## 三级区划的JSON格式
+
+JSON格式，适合web端js加载。
+
+
+```json
+[
+  {
+    "code": 110000000000,
+    "name": "北京市",
+    "level": 1,
+    "pcode": 0,
+    "children": [
+      {
+        "code": 110100000000,
+        "name": "市辖区",
+        "level": 2,
+        "pcode": 110000000000,
+        "children": [
+          {
+            "code": 110101000000,
+            "name": "东城区",
+            "level": 3,
+            "pcode": 110100000000
+          },
+          {
+            "code": 110102000000,
+            "name": "西城区",
+            "level": 3,
+            "pcode": 110100000000
+          }
+        ]
+      }
+    ]
+  }
+]
+```
+
+## 文件列表
+
+- area_code_2018.csv.gz
+- area_code_2018.sql.gz
+- area_code_2018.json

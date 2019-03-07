@@ -1,9 +1,9 @@
 # 2019年中国全国5级行政区划（省、市、县、镇、村）
 
 * 数据来源 中华人民共和国国家统计局 http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2018/
-* 最新数据量 713479 （`2018年10月31日）
-* CSV格式 area_code.csv.gz
-* SQL格式 area_code.sql.gz
+* 最新数据量 713479 （2018年10月31日）
+* CSV格式 area_code_xxxx.csv.gz
+* SQL格式 area_code_xxxx.sql.gz
 * JSON格式 单JSON格式太大就不生成了
 * 建议级联操作，数据量确实太大了
 * 级别

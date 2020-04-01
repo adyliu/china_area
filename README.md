@@ -1,9 +1,9 @@
-# 2019年中国全国5级行政区划（省、市、县、镇、村）
+# 2020年中国全国5级行政区划（省、市、县、镇、村）
 
-* 数据来源 中华人民共和国国家统计局 http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2018/
-* 最新数据量 713479 （2018年10月31日）
-* CSV格式 area_code_xxxx.csv.gz
-* SQL格式 area_code_xxxx.sql.gz
+* 数据来源 中华人民共和国国家统计局 http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/
+* 最新数据量 704750 （2019年10月31日）
+* CSV格式 area_code_2020.csv.gz
+* SQL格式 area_code_2020.sql.gz
 * JSON格式 单JSON格式太大就不生成了
 * 建议级联操作，数据量确实太大了
 * 级别
@@ -16,6 +16,9 @@
 
 ![summary](summary.png "汇总")
 
+- 少了1个地级市：山东省莱芜市，被济南市合并了，做大省会的意图明显，二线城市中济南落户比较明显
+- 少了
+
 ## CSV格式
 
 * code,name,level,pcode
@@ -26,10 +29,10 @@
 文本内容
 
 ```bash
-$ gzcat area_code_2019.csv.gz |wc -l
+$ gzcat area_code_2020.csv.gz |wc -l
   713479
 
-$ gzcat area_code_2019.csv.gz |head
+$ gzcat area_code_2020.csv.gz |head
 110101001001,多福巷社区居委会,5,110101001000
 110101001002,银闸社区居委会,5,110101001000
 110101001005,东厂社区居委会,5,110101001000
@@ -44,20 +47,20 @@ $ gzcat area_code_2019.csv.gz |head
 
 ## SQL 格式
 
-> $ gzcat area_code_2019.sql.gz |head -n 38
+> $ gzcat area_code_2020.sql.gz |head -n 38
 
 ```sql
-$ gzcat area_code_2019.sql.gz |head -n 38
+$ gzcat area_code_2020.sql.gz |head -n 38
 # ************************************************************
 # Sequel Pro SQL dump
-# Version 5428
+# Version 5446
 #
 # https://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 8.0.13)
+# Host: 127.0.0.1 (MySQL 5.7.25)
 # Database: china_area
-# Generation Time: 2019-03-07 10:27:09 +0000
+# Generation Time: 2020-04-01 09:06:02 +0000
 # ************************************************************
 
 
@@ -71,12 +74,12 @@ SET NAMES utf8mb4;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table area_code_2019
+# Dump of table area_code_2020
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `area_code_2019`;
+DROP TABLE IF EXISTS `area_code_2020`;
 
-CREATE TABLE `area_code_2019` (
+CREATE TABLE `area_code_2020` (
   `code` bigint(12) unsigned NOT NULL COMMENT '区划代码',
   `name` varchar(128) NOT NULL DEFAULT '' COMMENT '名称',
   `level` tinyint(1) NOT NULL COMMENT '级别1-5,省市县镇村',
@@ -85,25 +88,25 @@ CREATE TABLE `area_code_2019` (
   KEY `name` (`name`),
   KEY `level` (`level`),
   KEY `pcode` (`pcode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 
 > 创建视图area_index
 
 ```sql
-CREATE VIEW area_index_2019 AS
+CREATE VIEW area_index_2020 AS
     SELECT a.code,e.name AS province,d.name AS city  ,c.name AS county,b.name AS town,a.name AS villagetr
-    FROM area_code_2019 a
-        JOIN area_code_2019 b ON a.level=5 AND b.level=4 AND a.pcode=b.code
-        JOIN area_code_2019 c ON b.pcode=c.code
-        JOIN area_code_2019 d ON c.pcode=d.code
-        JOIN area_code_2019 e ON d.pcode=e.code
+    FROM area_code_2020 a
+        JOIN area_code_2020 b ON a.level=5 AND b.level=4 AND a.pcode=b.code
+        JOIN area_code_2020 c ON b.pcode=c.code
+        JOIN area_code_2020 d ON c.pcode=d.code
+        JOIN area_code_2020 e ON d.pcode=e.code
     ORDER BY a.code
 ```
 
 查询几条记录
 
-> SELECT * FROM area_index_2019 LIMIT 10
+> SELECT * FROM area_index_2020 LIMIT 10
 
 ```text
 code    province    city    county  town    villagetr
@@ -159,6 +162,6 @@ JSON格式，适合web端js加载。
 
 ## 文件列表
 
-- area_code_2019.csv.gz
-- area_code_2019.sql.gz
-- area_code_2019.json
+- area_code_2020.csv.gz
+- area_code_2020.sql.gz
+- area_code_2020.json

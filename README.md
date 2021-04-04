@@ -22,7 +22,7 @@
 例如：
 
 - 山东省/青岛市/莱西市/[院上镇](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/37/02/370285.html)  2019年有[103个村子](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/37/02/85/370285104.html)，到了2020年合并为[10个社区](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/37/02/85/370285104.html)，少了93个村
-- 山东省/青岛市/莱西市/[姜山镇](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/37/02/370285.html)  2019年有[96个村子](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/37/02/85/370285101.html)，到了2020年合并为[14个社区](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/37/02/85/370285101.html)，少了93个村
+- 山东省/青岛市/莱西市/[姜山镇](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/37/02/370285.html)  2019年有[96个村子](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/37/02/85/370285101.html)，到了2020年合并为[14个社区](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/37/02/85/370285101.html)，少了82个村
 - 山东省/聊城市/高唐县/[杨屯镇](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/37/15/371526.html)  2019年有[81个村子](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/37/15/26/371526109.html)，到了2020年合并为[18个社区](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/37/15/26/371526109.html)，少了63个村
 
 

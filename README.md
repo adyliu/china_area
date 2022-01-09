@@ -1,9 +1,9 @@
-# 2021年中国全国5级行政区划（省、市、县、镇、村）
+# 2022年中国全国5级行政区划（省、市、县、镇、村）
 
-* 数据来源 中华人民共和国国家统计局 http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/
-* 最新数据量 679237 （2020年6月30日）
-* CSV格式 area_code_2021.csv.gz
-* SQL格式 area_code_2021.sql.gz
+* 数据来源 中华人民共和国国家统计局 http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2021/index.html
+* 最新数据量 654923 （2021年10月31日）
+* CSV格式 area_code_2022.csv.gz
+* SQL格式 area_code_2022.sql.gz
 * JSON格式 单JSON格式太大就不生成了
 * 建议级联操作，数据量确实太大了
 * 级别
@@ -14,41 +14,17 @@
   * 5级：村、居委会
 
 
-![summary](summary2021.jpg "汇总")
+![summary](summary2022.png "汇总")
 
 
 ## 大量村镇合并
 
 例如：
 
-- 山东省/青岛市/莱西市/[院上镇](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/37/02/370285.html)  2019年有[103个村子](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/37/02/85/370285104.html)，到了2020年合并为[10个社区](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/37/02/85/370285104.html)，少了93个村
-- 山东省/青岛市/莱西市/[姜山镇](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/37/02/370285.html)  2019年有[96个村子](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/37/02/85/370285101.html)，到了2020年合并为[14个社区](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/37/02/85/370285101.html)，少了82个村
-- 山东省/聊城市/高唐县/[杨屯镇](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/37/15/371526.html)  2019年有[81个村子](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/37/15/26/371526109.html)，到了2020年合并为[18个社区](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/37/15/26/371526109.html)，少了63个村
-
+`略`
 
 ----
 
-# 2020年中国全国5级行政区划（省、市、县、镇、村）
-
-* 数据来源 中华人民共和国国家统计局 http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/
-* 最新数据量 704750 （2019年10月31日）
-* CSV格式 area_code_2020.csv.gz
-* SQL格式 area_code_2020.sql.gz
-* JSON格式 单JSON格式太大就不生成了
-* 建议级联操作，数据量确实太大了
-* 级别
-  * 1级：省、直辖市、自治区
-  * 2级：地级市
-  * 3级：市辖区、县（旗）、县级市、自治县（自治旗）、特区、林区
-  * 4级：镇、乡、民族乡、县辖区、街道
-  * 5级：村、居委会
-
-
-![summary](summary.png "汇总")
-
-- 少了1个地级市：山东省莱芜市，被济南市合并了，做大省会的意图明显，二线城市中济南落户比较明显
-
----
 
 ## CSV格式
 
@@ -60,37 +36,37 @@
 文本内容
 
 ```bash
-$ gzcat area_code_2021.csv.gz |wc -l
-  679237
+$ gzcat area_code_2022.csv.gz |wc -l
+  654923
 
-$ gzcat area_code_2021.csv.gz |head
-110000000000,"北京市",1,0
-110100000000,"市辖区",2,110000000000
-110101000000,"东城区",3,110100000000
-110101001000,"东华门街道",4,110101000000
-110101001001,"多福巷社区居委会",5,110101001000
-110101001002,"银闸社区居委会",5,110101001000
-110101001005,"东厂社区居委会",5,110101001000
-110101001006,"智德社区居委会",5,110101001000
-110101001007,"南池子社区居委会",5,110101001000
-110101001008,"黄图岗社区居委会",5,110101001000
+$ gzcat area_code_2022.csv.gz |head
+110101001001,多福巷社区居委会,5,110101001000
+110101001002,银闸社区居委会,5,110101001000
+110101001005,东厂社区居委会,5,110101001000
+110101001006,智德社区居委会,5,110101001000
+110101001007,南池子社区居委会,5,110101001000
+110101001009,灯市口社区居委会,5,110101001000
+110101001010,正义路社区居委会,5,110101001000
+110101001013,台基厂社区居委会,5,110101001000
+110101001014,韶九社区居委会,5,110101001000
+110101001015,王府井社区居委会,5,110101001000
 ```
 
 ## SQL 格式
 
-> $ gzcat area_code_2021.sql.gz |head -n 38
+> $ gzcat area_code_2022.sql.gz |head -n 38
 
 ```sql
 # ************************************************************
 # Sequel Ace SQL dump
-# 版本号： 3024
+# 版本号： 20021
 #
 # https://sequel-ace.com/
 # https://github.com/Sequel-Ace/Sequel-Ace
 #
 # 主机: 127.0.0.1 (MySQL 5.7.29)
 # 数据库: china_area
-# 生成时间: 2021-04-04 07:24:01 +0000
+# 生成时间: 2022-01-09 15:13:47 +0000
 # ************************************************************
 
 
@@ -103,12 +79,12 @@ SET NAMES utf8mb4;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# 转储表 area_code_2021
+# 转储表 area_code_2022
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `area_code_2021`;
+DROP TABLE IF EXISTS `area_code_2022`;
 
-CREATE TABLE `area_code_2021` (
+CREATE TABLE `area_code_2022` (
   `code` bigint(12) unsigned NOT NULL COMMENT '区划代码',
   `name` varchar(128) NOT NULL DEFAULT '' COMMENT '名称',
   `level` tinyint(1) NOT NULL COMMENT '级别1-5,省市县镇村',
@@ -118,24 +94,38 @@ CREATE TABLE `area_code_2021` (
   KEY `level` (`level`),
   KEY `pcode` (`pcode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+```
+
+> 创建视图 area_index_2022
+
+```sql
+CREATE VIEW area_index_2022 AS
+    SELECT a.code,e.name AS province,d.name AS city  ,c.name AS county,b.name AS town,a.name AS villagetr
+    FROM area_code_2022 a
+        JOIN area_code_2022 b ON a.level=5 AND b.level=4 AND a.pcode=b.code
+        JOIN area_code_2022 c ON b.pcode=c.code
+        JOIN area_code_2022 d ON c.pcode=d.code
+        JOIN area_code_2022 e ON d.pcode=e.code
+    ORDER BY a.code
 ```
 
 查询几条记录
 
-> SELECT * FROM area_index_2021 LIMIT 10
+> SELECT * FROM area_index_2022 LIMIT 10
 
 ```text
-code    province    city    county  town    villagetr
-110101001001    北京市 市辖区 东城区 东华门街道办事处    多福巷社区居委会
-110101001002    北京市 市辖区 东城区 东华门街道办事处    银闸社区居委会
-110101001005    北京市 市辖区 东城区 东华门街道办事处    东厂社区居委会
-110101001006    北京市 市辖区 东城区 东华门街道办事处    智德社区居委会
-110101001007    北京市 市辖区 东城区 东华门街道办事处    南池子社区居委会
-110101001008    北京市 市辖区 东城区 东华门街道办事处    黄图岗社区居委会
-110101001009    北京市 市辖区 东城区 东华门街道办事处    灯市口社区居委会
-110101001010    北京市 市辖区 东城区 东华门街道办事处    正义路社区居委会
-110101001011    北京市 市辖区 东城区 东华门街道办事处    甘雨社区居委会
-110101001013    北京市 市辖区 东城区 东华门街道办事处    台基厂社区居委会
+code	province	city	county	town	villagetr
+110101001001	北京市	市辖区	东城区	东华门街道	多福巷社区居委会
+110101001002	北京市	市辖区	东城区	东华门街道	银闸社区居委会
+110101001005	北京市	市辖区	东城区	东华门街道	东厂社区居委会
+110101001006	北京市	市辖区	东城区	东华门街道	智德社区居委会
+110101001007	北京市	市辖区	东城区	东华门街道	南池子社区居委会
+110101001009	北京市	市辖区	东城区	东华门街道	灯市口社区居委会
+110101001010	北京市	市辖区	东城区	东华门街道	正义路社区居委会
+110101001013	北京市	市辖区	东城区	东华门街道	台基厂社区居委会
+110101001014	北京市	市辖区	东城区	东华门街道	韶九社区居委会
+110101001015	北京市	市辖区	东城区	东华门街道	王府井社区居委会
 ```
 
 ## 三级区划的JSON格式
@@ -178,6 +168,6 @@ JSON格式，适合web端js加载。
 
 ## 文件列表
 
-- area_code_2021.csv.gz
-- area_code_2021.sql.gz
-- area_code_2021.json
+- area_code_2022.csv.gz
+- area_code_2022.sql.gz
+- area_code_2022.json

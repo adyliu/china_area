@@ -15,7 +15,7 @@
 
 
 ![summary](summary2022.png "汇总")
-
+![total](total2022.png "分省汇总")
 
 ## 大量村镇合并
 

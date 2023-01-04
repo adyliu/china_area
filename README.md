@@ -1,9 +1,9 @@
-# 2022年中国全国5级行政区划（省、市、县、镇、村）
+# 2023年中国全国5级行政区划（省、市、县、镇、村）
 
-* 数据来源 中华人民共和国国家统计局 http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2021/index.html
-* 最新数据量 654949 （2021年10月31日）
-* CSV格式 area_code_2022.csv.gz
-* SQL格式 area_code_2022.sql.gz
+* 数据来源 中华人民共和国国家统计局 http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2022/index.html
+* 最新数据量 664483 （2022年10月31日）
+* CSV格式 area_code_2023.csv.gz
+* SQL格式 area_code_2023.sql.gz
 * JSON格式 单JSON格式太大就不生成了
 * 建议级联操作，数据量确实太大了
 * 级别
@@ -14,8 +14,8 @@
   * 5级：村、居委会
 
 
-![summary](summary2022.png "汇总")
-![total](total2022.png "分省汇总")
+![summary](summary2023.png "汇总")
+![total](total2023.png "分省汇总")
 
 ## 大量村镇合并
 
@@ -36,8 +36,8 @@
 文本内容
 
 ```bash
-$ gzcat area_code_2022.csv.gz |wc -l
-  654949
+$ gzcat area_code_2023.csv.gz |wc -l
+  664483
 
 $ gzcat area_code_2022.csv.gz |head
 110101001001,多福巷社区居委会,5,110101001000
@@ -54,37 +54,34 @@ $ gzcat area_code_2022.csv.gz |head
 
 ## SQL 格式
 
-> $ gzcat area_code_2022.sql.gz |head -n 38
+> $ gzcat area_code_2023.sql.gz |head -n 34
 
 ```sql
-# ************************************************************
-# Sequel Ace SQL dump
-# 版本号： 20021
-#
-# https://sequel-ace.com/
-# https://github.com/Sequel-Ace/Sequel-Ace
-#
-# 主机: 127.0.0.1 (MySQL 5.7.29)
-# 数据库: china_area
-# 生成时间: 2022-01-21 19:44:55 +0000
-# ************************************************************
-
+-- MariaDB dump 10.18  Distrib 10.5.8-MariaDB, for Linux ()
+--
+-- Host: localhost    Database: china_area
+-- ------------------------------------------------------
+-- Server version 10.5.8-MariaDB-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-SET NAMES utf8mb4;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE='NO_AUTO_VALUE_ON_ZERO', SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+--
+-- Table structure for table `area_code_2023`
+--
 
-# 转储表 area_code_2022
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `area_code_2022`;
-
-CREATE TABLE `area_code_2022` (
+DROP TABLE IF EXISTS `area_code_2023`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `area_code_2023` (
   `code` bigint(12) unsigned NOT NULL COMMENT '区划代码',
   `name` varchar(128) NOT NULL DEFAULT '' COMMENT '名称',
   `level` tinyint(1) NOT NULL COMMENT '级别1-5,省市县镇村',
@@ -97,35 +94,38 @@ CREATE TABLE `area_code_2022` (
 
 ```
 
-> 创建视图 area_index_2022
+> 创建视图 area_index_2023
 
 ```sql
-CREATE VIEW area_index_2022 AS
+CREATE VIEW area_index_2023 AS
     SELECT a.code,e.name AS province,d.name AS city  ,c.name AS county,b.name AS town,a.name AS villagetr
-    FROM area_code_2022 a
-        JOIN area_code_2022 b ON a.level=5 AND b.level=4 AND a.pcode=b.code
-        JOIN area_code_2022 c ON b.pcode=c.code
-        JOIN area_code_2022 d ON c.pcode=d.code
-        JOIN area_code_2022 e ON d.pcode=e.code
+    FROM area_code_2023 a
+        JOIN area_code_2023 b ON a.level=5 AND b.level=4 AND a.pcode=b.code
+        JOIN area_code_2023 c ON b.pcode=c.code
+        JOIN area_code_2023 d ON c.pcode=d.code
+        JOIN area_code_2023 e ON d.pcode=e.code
     ORDER BY a.code
 ```
 
 查询几条记录
 
-> SELECT * FROM area_index_2022 LIMIT 10
+> SELECT * FROM area_index_2023 LIMIT 10
 
 ```text
-code	province	city	county	town	villagetr
-110101001001	北京市	市辖区	东城区	东华门街道	多福巷社区居委会
-110101001002	北京市	市辖区	东城区	东华门街道	银闸社区居委会
-110101001005	北京市	市辖区	东城区	东华门街道	东厂社区居委会
-110101001006	北京市	市辖区	东城区	东华门街道	智德社区居委会
-110101001007	北京市	市辖区	东城区	东华门街道	南池子社区居委会
-110101001009	北京市	市辖区	东城区	东华门街道	灯市口社区居委会
-110101001010	北京市	市辖区	东城区	东华门街道	正义路社区居委会
-110101001013	北京市	市辖区	东城区	东华门街道	台基厂社区居委会
-110101001014	北京市	市辖区	东城区	东华门街道	韶九社区居委会
-110101001015	北京市	市辖区	东城区	东华门街道	王府井社区居委会
++--------------+-----------+-----------+-----------+-----------------+--------------------------+
+| code         | province  | city      | county    | town            | villagetr                |
++--------------+-----------+-----------+-----------+-----------------+--------------------------+
+| 110101001001 | 北京市    | 市辖区    | 东城区    | 东华门街道      | 多福巷社区居委会         |
+| 110101001002 | 北京市    | 市辖区    | 东城区    | 东华门街道      | 银闸社区居委会           |
+| 110101001005 | 北京市    | 市辖区    | 东城区    | 东华门街道      | 东厂社区居委会           |
+| 110101001006 | 北京市    | 市辖区    | 东城区    | 东华门街道      | 智德社区居委会           |
+| 110101001007 | 北京市    | 市辖区    | 东城区    | 东华门街道      | 南池子社区居委会         |
+| 110101001009 | 北京市    | 市辖区    | 东城区    | 东华门街道      | 灯市口社区居委会         |
+| 110101001010 | 北京市    | 市辖区    | 东城区    | 东华门街道      | 正义路社区居委会         |
+| 110101001013 | 北京市    | 市辖区    | 东城区    | 东华门街道      | 台基厂社区居委会         |
+| 110101001014 | 北京市    | 市辖区    | 东城区    | 东华门街道      | 韶九社区居委会           |
+| 110101001015 | 北京市    | 市辖区    | 东城区    | 东华门街道      | 王府井社区居委会         |
++--------------+-----------+-----------+-----------+-----------------+--------------------------+
 ```
 
 ## 三级区划的JSON格式
@@ -168,6 +168,6 @@ JSON格式，适合web端js加载。
 
 ## 文件列表
 
-- area_code_2022.csv.gz
-- area_code_2022.sql.gz
-- area_code_2022.json
+- [area_code_2023.csv.gz](area_code_2023.csv.gz)
+- [area_code_2023.sql.gz](area_code_2023.sql.gz)
+- [area_code_2023.json](area_code_2023.json)

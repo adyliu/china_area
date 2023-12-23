@@ -1,5 +1,6 @@
 # 2024年中国全国5级行政区划（省、市、县、镇、村）
 
+
 * 数据来源 中华人民共和国国家统计局 https://www.stats.gov.cn/sj/tjbz/tjyqhdmhcxhfdm/2023/
 * 最新数据量 665552 （2023年6月30日）
 * CSV格式 area_code_2024.csv.gz
